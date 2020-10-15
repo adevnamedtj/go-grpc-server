@@ -1,0 +1,24 @@
+syntax = "proto3";
+package product;
+option go_package = "proto;product";
+message Product {
+  int64 id = 1;
+  string name = 2;
+  string category = 3;
+  string type = 4;
+  string manufactured = 5;
+  string manufacturer = 6;
+}
+message ProductName {
+  string name = 1;
+}
+
+message ProductID {
+  int64 id = 1;
+}
+
+service ProductService{
+  rpc Create(Product) returns (Product) {}
+  rpc LookupByName(ProductName) returns (Product){}
+  rpc LookupByID(ProductID) returns (Product){}
+}
